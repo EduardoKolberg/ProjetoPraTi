@@ -1,0 +1,82 @@
+<!DOCTYPE html> 
+
+<html>
+    <head>
+        <meta charset="utf-8">
+
+        <link rel="stylesheet" href="style.css">
+
+        <script src="script1.js"></script>
+
+        <title>Cadastro de alunos</title>
+        
+    </head>
+    <body>
+
+        <header class="cabecalho" id="cabecalho"> <h1 class="cabecalho">Cadastro de Alunos</h1></header>
+
+        <div id="sucessoCadastro" class="alerta"> <!-- Aprendi a fazer vendo em https://www.w3schools.com/howto/howto_js_alert.asp-->
+            <span class="botaofechar" onclick="this.parentElement.style.display='none';">&times;</span> 
+            <strong> Cadastro efetuado com sucesso. </strong> 
+        </div>
+
+        <div id="sucessoEditar" class="alerta">
+            <span class="botaofechar" onclick="this.parentElement.style.display='none';">&times;</span> 
+            <strong> Alterações realizadas com sucesso. </strong> 
+        </div>
+
+        <div class="formularioCadastro">
+                
+            <table class="formularioCadastro">
+                <tr>
+                    <td>
+                        <label for="nome"> *Nome: </label>
+                    </td>
+                    <td>
+                        <input type="text" id="nome" placeholder="ex.: João">
+                    </td>
+                    <td>
+                        <label for="telefone">*Telefone: </label>
+                    </td>
+                    <td>
+                        <input type="number" id="telefone" placeholder="ex.: 51999999999">
+                    </td>
+                    <td>
+                        <label for="data">Data de nascimento: </label>
+                    </td>
+                    <td>
+                        <input type="date" id="data" placeholder="ex.: 01/01/1980" >
+                    </td>
+                    <td>
+                        <label for="nota">Nota final: </label>
+                    </td>
+                    <td>
+                        <input type="number" id="nota" placeholder="Valor entre 0 e 10" >
+                    </td>
+                    <td>
+                        <input  type="button" onclick="ConfirmarCadastro()" value="Cadastrar" id="botaoCadastro"> 
+                        <input type="hidden" onclick="salvarAlteracoes()" value="Salvar alterações" id="botaoSalvar">
+                        <input type="hidden" onclick="cancelar()" value="Cancelar" id="cancelar">
+                    </td>
+                </tr>
+            </table>
+
+            </div>
+            
+            <div class="alunosCadastrados">
+                <table class="tabelaAlunos">
+                    <tbody id="destino">
+                    </tbody>
+                </table>
+
+            </div>
+
+            <p id="placeholder">Nenhum aluno cadastrado</p>
+        
+        <footer id="rodape"> 
+            <p id="obrigatorios"> *Campos obrigatórios</p>
+            <p id="voltarTopo"> <a href="#cabecalho">Voltar para o topo </a></p>
+        </footer>
+        
+    </body>
+</html>

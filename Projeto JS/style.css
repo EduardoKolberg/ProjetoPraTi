@@ -1,0 +1,109 @@
+.tabelaAlunos{
+    border: 1px solid rgba(255, 255, 255, 0.815)k;
+    width: 50%;
+    background-color: rgba(255, 255, 255, 0.815);
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+ }
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.705) ;
+    color: white;
+    width: 100%;
+    height: 30px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+body {
+    background-color: rgb(216, 214, 214);
+}
+
+.cabecalho{
+    background-color: rgba(0, 0, 0, 0.479);
+    color: white;
+    width: auto;
+    height: 50px;
+    text-align: center;
+    margin-top: 0px;
+}
+
+p#voltarTopo{
+    margin: 0px;
+    text-align: right;
+}
+
+p#obrigatorios{
+    margin: 0px;
+    text-align: left;
+    float: left;
+}
+
+a:link {
+    color: white;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:visited {
+    color: white;
+    background-color: transparent;
+    text-decoration: none;
+  }
+
+a#excluir{
+    color: blue;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+a#editar{
+    color: blue;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+p#placeholder{
+    font-weight: bold;
+}
+
+body{
+    text-align:center;
+}
+
+.formularioCadastro {
+    text-align:center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#botaoCadastro{
+    margin-left: 20px;
+}
+
+.alerta {
+    background-color: #21c249;
+    color: white;
+    width: auto;
+    display: none;
+
+  }
+
+  .botaofechar {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .botaofechar:hover {
+    color: black;
+  }
