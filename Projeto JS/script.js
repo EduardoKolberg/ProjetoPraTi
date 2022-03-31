@@ -1,6 +1,5 @@
 
-var alunos = []; //array onde ficam salvos os cadastros.
-var arrayObj=[]; // Array onde ficam salvas as informações de cadas cadastro, usado para editar.
+var arrayObj=[]; // Array onde ficam salvas as informações de cadas cadastro.
 var idEditar ='' // Variável que recebe o ID quando é usada a opção de editar.
 
 function ConfirmarCadastro(){ //Caso confirme efetua o cadastro
@@ -10,9 +9,6 @@ function ConfirmarCadastro(){ //Caso confirme efetua o cadastro
         if (confereCampos(obj.nome,obj.telefone,obj.nota, obj.data)) //chama a função para conferir se algo foi posto nos campos obrigatórios bem como os demais requisitos.
         { 
         document.getElementById("placeholder").style.display='none'; // Esconde a mensagem de que não há cadastros.
-        let data = corrigeData(obj.data);
-        let cadastro = '<tr id="LXYZ"><td colspan=2>' +obj.nome+'</td><td colspan=2>'+obj.telefone+ '</td><td colspan=2>'+ data +'</td><td colspan=2>'+obj.nota+'</td> <td><a id="excluir" onclick="excluiCadastro(\'LXYZ\');">Excluir</a> / <a id="editar" onclick="editar(\'LXYZ\');">Editar</a> </td> </tr>';
-        alunos.push(cadastro);
         arrayObj.push(obj);
         document.getElementById("sucessoEditar").style.display='none'; //Esconde msg de sucesso de edição caso ela esteja presente.
         document.getElementById("sucessoCadastro").style.display='block'; //Mostra msg de sucesso.
@@ -51,10 +47,12 @@ function criaTabela() {
     let html = "";
     let titulo ="<tr><th colspan=12><h2>Alunos Cadastrados</h2></th></tr>";
     let colunas = "<tr><th colspan=2>Nome</th><th colspan=2>Telefone</th><th colspan=2 >Data de Nascimento</th><th colspan=2 >Nota final</th> <th colspan=2 >Opções</th></tr>";
-    for(i=0;i<=alunos.length-1;i++){ 
+    for(i=0;i<=arrayObj.length-1;i++){ 
+        
+        let data = corrigeData(arrayObj[i].data);
+        let cadastro = '<tr id="L"'+i+'"><td colspan=2>' + arrayObj[i].nome+'</td><td colspan=2>'+arrayObj[i].telefone+ '</td><td colspan=2>'+ data +'</td><td colspan=2>'+arrayObj[i].nota+'</td> <td><a id="excluir" onclick="excluiCadastro(\'L'+ i +'\');">Excluir</a> / <a id="editar" onclick="editar(\'L'+ i +'\');">Editar</a> </td> </tr>';
 
-        let alunosComId= alunos[i].replace(/XYZ/g,i); //coloca o ID dinamicamente, sendo ele sempre igual a posição ocupada no array facilitando a exclusão e edição.
-        html += alunosComId;
+        html += cadastro;
     }
     destino.innerHTML =titulo + colunas + html;
 }
@@ -128,7 +126,6 @@ function excluiCadastro(idAluno){
     if (confirm("Tem certeza que deseja excluir essa entrada? "))
     {
         let ID = pegaID(idAluno);
-        alunos.splice(ID,1);
         arrayObj.splice(ID,1);
         criaTabela();
     }
@@ -160,8 +157,6 @@ function esconderBotoes(){
     if (confirm("Tem certeza que deseja modificar esse Cadastro? "))
     {
         arrayObj[idEditar]= criaObjeto();
-        let data = corrigeData(arrayObj[idEditar].data); 
-        alunos[idEditar] = '<tr id="LXYZ"><td colspan=2>' + arrayObj[idEditar].nome+'</td><td colspan=2>'+arrayObj[idEditar].telefone+ '</td><td colspan=2>'+ data +'</td><td colspan=2>'+arrayObj[idEditar].nota+'</td> <td><a id="excluir" onclick="excluiCadastro(\'LXYZ' +'\');">Excluir</a> / <a id="editar" onclick="editar(\'LXYZ' +'\');">Editar</a> </td> </tr>';
         if (confereCampos(arrayObj[idEditar].nome,arrayObj[idEditar].telefone,arrayObj[idEditar].nota,arrayObj[idEditar].data)){ 
             document.getElementById("sucessoCadastro").style.display='none'; //Esconde msg de sucesso de cadastro
             document.getElementById("sucessoEditar").style.display='block'; //Mostra msg de sucesso da edição.
