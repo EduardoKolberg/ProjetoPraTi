@@ -17,7 +17,7 @@ public class PessoaController {
     public String validaTelefone (){
         String telefone = Read.readString();
         telefone = normalizaTelefone(telefone);
-        while(!Pattern.matches("[0-9]{11}",telefone)) {
+        while(!Pattern.matches("[0-9]{11}",telefone)) {  //Telefone deve ser composto por números, tendo 11 digitos
             System.out.println("telefone inválido digite novamente: ");
             telefone = Read.readString();
            telefone = normalizaTelefone(telefone);
@@ -28,7 +28,7 @@ public class PessoaController {
     public String validaTelefoneEditar (){
         String telefone = Read.readString();
         telefone = normalizaTelefone(telefone);
-        while(!Pattern.matches("[0-9]{11}",telefone) && !telefone.equals("")) {
+        while(!Pattern.matches("[0-9]{11}",telefone) && !telefone.equals("")) { //Telefone deve ser composto por números, tendo 11 digitos ou vazio para não ser modificado
             System.out.println("telefone inválido digite novamente: ");
             telefone = Read.readString();
             telefone = normalizaTelefone(telefone);
@@ -39,7 +39,7 @@ public class PessoaController {
 
     public String validaNome(){
         String nome = Read.readString();
-        while(!nome.matches("^[A-Za-z].*")) {
+        while(!nome.matches("^[A-Za-z].*")) { //Nome deve ser composto por letras, isso impedi que deixe o nome vazio ou com números
             System.out.println("Nome inválido, deve conter pelo menos uma letra, tente novamente: ");
             nome = Read.readString();
         }
@@ -48,7 +48,7 @@ public class PessoaController {
 
     public String validaNomeEditar(){
         String nome = Read.readString();
-        while(!nome.matches("^[A-Za-z].*") && !nome.equals("")) {
+        while(!nome.matches("^[A-Za-z].*") && !nome.equals("")) { //Versão que aceita nome como vazio para não alterar o cadastro
             System.out.println("Nome inválido, deve conter pelo menos uma letra, tente novamente: ");
             nome = Read.readString();
         }
@@ -79,9 +79,9 @@ public class PessoaController {
                     data = Read.readString();
                 }
             }
-            if (localDate.isAfter(LocalDate.now())) {
+            if (localDate.isAfter(LocalDate.now())) { //Data de nascimento não pode ser futura
                 System.out.println("Data de nascimento não pode ser data futura! Tente novamente: ");
-            } else if (localDate.isBefore(LocalDate.now().minusYears(100))){
+            } else if (localDate.isBefore(LocalDate.now().minusYears(100))){ //Data de nascimento não pode ser mais antiga que 100 anos da data atual.
                 System.out.println("Data de nascimento não pode ser mais antiga que 100 anos da data presente! Tente novamente: ");
             }
             else break;
@@ -94,7 +94,7 @@ public class PessoaController {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu").withResolverStyle(ResolverStyle.STRICT);
         while (true) {
             String data = Read.readString();
-            if(data.equals("")) return null;
+            if(data.equals("")) return null; // retorna null para não modificar a data nos casos de edição
             while (true) {
                 try {
                     localDate = LocalDate.parse(data, formatter);
@@ -127,10 +127,12 @@ public class PessoaController {
     public String listPessoas() {
         return pessoaService.listPessoas();
     }
-
+    /*Há outra maneira de fazer, tornando Double listpessoas, onde verifica se a String está vazia, retornando Null caso esteja e, caso não esteja, convertendo para Double
+    * e fazendo os testes para validar, escolhi já testar como String e usar outra função para transformar em Double.
+     */
     public String validaNota (){
         String nota = Read.readString();
-        while(!Pattern.matches("[0-9]|10",nota) && !nota.equals("")) {
+        while(!Pattern.matches("([0-9][.]*[0-9]*)|10 ",nota) && !nota.equals("")) {
             System.out.println("Nota inválida digite novamente (0-10) ou deixe sem nada para criar uma pessoa: ");
             nota = Read.readString();
         }

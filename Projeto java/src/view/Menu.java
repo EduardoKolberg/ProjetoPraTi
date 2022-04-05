@@ -113,10 +113,20 @@ public class Menu {
                 nome = pessoa.getNome();
             }
             System.out.println("Digite o novo telefone ou deixe em branco caso não queira modificar: ");
-            String telefoneNovo = pessoaController.validaTelefoneEditar();
-            if (telefoneNovo.equals("")){
+            String telefoneNovo;
+            while (true) {
+                telefoneNovo = pessoaController.validaTelefoneEditar();
+                if (pessoaController.pessoaVerificaExistencia(telefoneNovo)) {
+                    System.out.println("A pessoa/número de telefone já se encontra cadastrado no cadastro de pessoas! Tente novamente com outro número");
+                } else if (alunoController.alunoVerificaExistencia(telefoneNovo)) {
+                    System.out.println("O aluno/número de telefone já se encontra no cadastro de alunos! Tente novamente com outro número");
+                }
+                else break;
+            }
+            if (telefoneNovo.equals("")) {
                 telefoneNovo = pessoa.getTelefone();
             }
+
             System.out.println("Digite a nova data de nascimento ou deixe em branco caso não queira modificar: ");
             LocalDate data = pessoaController.validaDataNascimentoEditar();
             if (data == null){
@@ -138,22 +148,32 @@ public class Menu {
                 return true;
             }
             System.out.println("Digite o novo Nome ou deixe em branco caso não queira modificar: ");
-            String nome = pessoaController.validaNomeEditar();
+            String nome = alunoController.validaNomeEditar();
             if (nome.equals("")){
                 nome = aluno.getNome();
             }
             System.out.println("Digite o novo telefone ou deixe em branco caso não queira modificar: ");
-            String telefoneNovo = pessoaController.validaTelefoneEditar();
+            String telefoneNovo;
+            while (true) {
+                telefoneNovo = alunoController.validaTelefoneEditar();
+                if (pessoaController.pessoaVerificaExistencia(telefoneNovo)) {
+                    System.out.println("Pessoa/número de telefone já se encontra cadastrado no cadastro de pessoas! Tente novamente com outro número");
+                } else if (alunoController.alunoVerificaExistencia(telefoneNovo)) {
+                    System.out.println("A pessoa/número de telefone já se encontra no cadastro de alunos! Tente novamente com outro número");
+                }
+                else break;
+            }
             if (telefoneNovo.equals("")){
                 telefoneNovo = aluno.getTelefone();
             }
+
             System.out.println("Digite a nova data de nascimento ou deixe em branco caso não queira modificar: ");
-            LocalDate data = pessoaController.validaDataNascimentoEditar();
+            LocalDate data = alunoController.validaDataNascimentoEditar();
             if (data == null){
                 data = aluno.getDataNascimento();
             }
             System.out.println("Digite a nova nota ou deixe em branco caso não queira modificar: ");
-            String nota = pessoaController.validaNota();
+            String nota = alunoController.validaNota();
             double notaFinal;
             if(nota.equals("")){
                 notaFinal = aluno.getNotaFinal();

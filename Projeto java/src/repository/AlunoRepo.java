@@ -11,13 +11,6 @@ import java.util.List;
 public class AlunoRepo  {
     private final List<Aluno> alunoCadastro = new ArrayList<>();
 
-    private LocalDate data = LocalDate.now();
-
-    public AlunoRepo(){
-        alunoCadastro.add(new Aluno("Eduardo","51999999999",data,9));
-        alunoCadastro.add(new Aluno("Luiza","51999999998",data,9));
-        alunoCadastro.add(new Aluno("Bernardo","51999999997",data,9));
-    }
 
     public void addAluno(Aluno aluno) {
         this.alunoCadastro.add(aluno);

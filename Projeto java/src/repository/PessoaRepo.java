@@ -9,14 +9,6 @@ import java.util.List;
 
 public class PessoaRepo {
     private final List<Pessoa> pessoaCadastro = new ArrayList<>();
-    private LocalDate data = LocalDate.now();
-
-    public PessoaRepo(){
-        pessoaCadastro.add(new Pessoa("Gustavo","51999999995",data));
-        pessoaCadastro.add(new Pessoa("Mariana","51999999994",data));
-        pessoaCadastro.add(new Pessoa("Sergio","51999999993",data));
-    }
-
 
     public void addPessoa(Pessoa pessoa) {
         this.pessoaCadastro.add(pessoa);
