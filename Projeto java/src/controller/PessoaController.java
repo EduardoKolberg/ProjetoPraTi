@@ -127,9 +127,10 @@ public class PessoaController {
     public String listPessoas() {
         return pessoaService.listPessoas();
     }
-    /*Há outra maneira de fazer, tornando Double listpessoas, onde verifica se a String está vazia, retornando Null caso esteja e, caso não esteja, convertendo para Double
-    * e fazendo os testes para validar, escolhi já testar como String e usar outra função para transformar em Double.
-     */
+
+    /*Há outra maneira de fazer, mudando o retorno para Double, onde verifica se a String está vazia, retornando Null caso esteja e, caso não esteja, convertendo para Double
+    * e fazendo os testes para validar, escolhi já testar como String e usar outra função para transformar em double.
+    */
     public String validaNota (){
         String nota = Read.readString();
         while(!Pattern.matches("([0-9][.]*[0-9]*)|10 ",nota) && !nota.equals("")) {

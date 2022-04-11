@@ -40,7 +40,7 @@ public class PessoaRepo {
         int i = pessoaCadastro.size();
         for (Pessoa pessoa : pessoaCadastro) {
             if (i == 1){
-                lista.append(pessoa.toString());
+                lista.append(pessoa.toString()); //Faz com que a última pessoa listada não começe uma nova linha.
             }
             else {
                 lista.append(pessoa.toString()).append("\n");

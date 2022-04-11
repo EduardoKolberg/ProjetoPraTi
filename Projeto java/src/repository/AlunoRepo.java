@@ -43,7 +43,7 @@ public class AlunoRepo  {
         int i = alunoCadastro.size();
         for (Aluno aluno : alunoCadastro){
             if (i == 1){
-                lista.append(aluno.toString());
+                lista.append(aluno.toString()); //Faz com que o último aluno listado não começe uma nova linha.
             }
             else {
                 lista.append(aluno.toString()).append("\n");
