@@ -1,24 +1,23 @@
 
-var arrayObj=[]; // Array onde ficam salvas as informações de cadas cadastro.
+const arrayObj=[]; // Array onde ficam salvas as informações de cadas cadastro.
 var idEditar ='' // Variável que recebe o ID quando é usada a opção de editar.
 
 function ConfirmarCadastro(){ //Caso confirme efetua o cadastro
     if (confirm("Tem certeza que deseja incluir esse Cadastro? "))
     {
         let obj = criaObjeto();
-        if (confereCampos(obj.nome,obj.telefone,obj.nota, obj.data)) //chama a função para conferir se algo foi posto nos campos obrigatórios bem como os demais requisitos.
-        { 
-        document.getElementById("placeholder").style.display='none'; // Esconde a mensagem de que não há cadastros.
-        arrayObj.push(obj);
-        document.getElementById("sucessoEditar").style.display='none'; //Esconde msg de sucesso de edição caso ela esteja presente.
-        document.getElementById("sucessoCadastro").style.display='block'; //Mostra msg de sucesso.
-        criaTabela();
-        limpar();
+        if (confereCampos(obj.nome,obj.telefone,obj.nota, obj.data)){ //chama a função para conferir se algo foi posto nos campos obrigatórios bem como os demais requisitos.
+            document.getElementById("placeholder").style.display='none'; // Esconde a mensagem de que não há cadastros.
+            arrayObj.push(obj);
+            document.getElementById("sucessoEditar").style.display='none'; //Esconde msg de sucesso de edição caso ela esteja presente.
+            document.getElementById("sucessoCadastro").style.display='block'; //Mostra msg de sucesso.
+            criaTabela();
+            limpar();
         }
         else {
             document.getElementById("sucessoCadastro").style.display='none'; 
         }
-  
+
     }
 }
 

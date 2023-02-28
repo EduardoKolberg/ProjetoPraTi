@@ -6,7 +6,6 @@ import model.Aluno;
 import model.Pessoa;
 import util.Read;
 
-
 import java.time.LocalDate;
 
 public class Menu {
